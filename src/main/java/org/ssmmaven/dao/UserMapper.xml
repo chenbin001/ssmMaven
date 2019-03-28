@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="org.ssmmaven.dao.UserMapper">
+    <resultMap type="org.ssmmaven.bean.User" id="checkLoginMap">
+        <result property="id" column="ID" />
+        <result property="userName" column="USER_NAME" />
+        <result property="userPsw" column="USER_PSW" />
+    </resultMap>
+    <select id="checkLogin" resultMap="checkLoginMap">
+        SELECT * FROM T_USER
+        <where>
+            <if test="userName != null and userName !=''">
+                AND USER_NAME= #{userName}
+            </if>
+            <if test="password != null and password !=''">
+                AND USER_PSW= #{password}
+            </if>
+        </where>
+    </select>
+</mapper>
