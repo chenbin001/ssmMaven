@@ -13,7 +13,6 @@ import org.ssmmaven.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
 @Controller
 public class UserController {
     @Autowired
@@ -34,7 +33,6 @@ public class UserController {
 
         HttpSession session = request.getSession();
         JSONObject data = new JSONObject();
-
             User user = userService.checkLogin(userName, password);
             if (user != null) {
                 data.put("login", "true");
